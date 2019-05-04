@@ -4,7 +4,7 @@ Go 语言设计模式的实例代码
 
 ## duck Typing
 
-- [duck Typing 介绍](https://github.com/vnues/go/tree/master/接口/REAdME.md)
+- [duck Typing 介绍](https://github.com/vnues/go/tree/master/接口/README.md)
 
 ## fmt 包学习
 
