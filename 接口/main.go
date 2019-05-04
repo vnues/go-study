@@ -2,14 +2,16 @@ package main
 
 import (
 	"./mock"
+	"./real"
 	"fmt"
+	"time"
 )
 //定义啦这个接口就得实现这个接口
 //这个接口是抽象 它只告诉你它这个接口有哪些行为也就是方法
 type Retriever interface {
 	//这个接口有get的方法
 	 Get(url string) string
-	 Post(url string) string
+	 //Post(url string) string
 
 }
 //声明这个接口解决实际问题的所需要的 把它归类成一个对象所有的行为？
@@ -38,6 +40,11 @@ func main(){
    mockRetriever,ok :=  r.(mock.Retriever)
    fmt.Println(mockRetriever)
    fmt.Println(ok)
+
+   var myreal Retriever
+   myreal=&real.Retriever{UserAgent: "Mozilla/5.0",TimeOut:time.Minute,}
+   fmt.Println(myreal.Get("http://www.hstc.edu.cn/"))
+
 }
 
 //指针变量的类型
@@ -56,3 +63,35 @@ func main(){
 //w = nil // type-<nil>
 
 //接口是什么？一个接口包含两层意思：它是一个方法的集合，同样是一个类型。让我们首先关注接口作为方法的集合这一方面。
+
+//我们说这个 concrete type 实现了这个 interface 的所有方法。
+
+//Type switch 就是利用 interface 存储不同 concrete type 的能力来实现的 assertion。
+
+//r.(type)这样拿到类型
+
+
+//理解什么是接口变量
+
+// var r Retriever //Retriever是定义的接口 r就是接口变量
+//接口变量有自己的指针
+//接口变量也是值传递
+//也就是传参数 接口变量是值传递？
+
+//接口变量自带指针？？？不明白
+
+
+
+//https://segmentfault.com/a/1190000015591319
+
+
+
+//最重要的一点 就是接口就是一个struct吧
+
+
+//https://blog.csdn.net/Ghost_leader/article/details/77126918
+
+//将对象复制给接口，会发生拷贝，而接口内部存储的是指向这个复制品的指针，即无法修改复制品的状态，也无法获取指针
+
+
+//参数是一个局部变量
