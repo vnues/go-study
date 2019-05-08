@@ -1,8 +1,49 @@
 package main
 
-import "fmt"
+import (
+	"./fib"
+	"bufio"
+	"fmt"
+	"os"
+)
+
+/**
+defer调用
+确保调用在函数结束时发生
+参数在defer语句时计算
+defer列表为先进后出
+
+何时使用defer
+open/close
+Lock/Unlock
+PrintHeader/PrintFooter
+
+**/
+
+//写入文件
+func writeFile(filename string){
+	  file,err :=os.Create(filename)
+	  if err !=nil{
+	  	panic(err)
+	  }
+	  //函数执行推出后close掉这个资源
+	  defer file.Close()
+      //直接写文件会很慢 所以用bufio包装
+	  writer := bufio.NewWriter(file)
+      //导入文件
+	  defer writer.Flush()
+	  f := fib.Fibonacci()
+	  for i:=0;i<20;i++ {
+	  	//将f函数返回掉值写入进去writer
+	  	 fmt.Fprint(writer,f())
+	  }
+
+}
 
 func main() {
+	writeFile("fib.txt")
+
+
 	//response, err := http.Get("http://www.baidu.com")
 	//if err != nil {
 	//	// handle error
@@ -12,10 +53,11 @@ func main() {
 	//
 	//body, _ := ioutil.ReadAll(response.Body)
 	//fmt.Println(string(body))
-	defer fmt.Println(1)
-	defer fmt.Println(2)
-	defer fmt.Println(3)
-	panic("error")
+	//defer fmt.Println(1)
+	//defer fmt.Println(2)
+	//defer fmt.Println(3)
+	//panic("error")
+
 }
 
 //函数执行完毕才会执行defer 有panic是先执行pannic之前的
