@@ -3,6 +3,7 @@ package main
 import (
 	"./filelisting"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 )
@@ -35,16 +36,66 @@ type slice struct {
 //函数当做参数需要声明类型 强类型语言的要求
 //但是有个问题我直接用包对形式引用不就行了吗
 
+
+
+
+/*
+增加业务逻辑-->需要增加用户和系统错误处理
+为什么需要？
+//我们想要自定义返回的错误信息
+*/
+
+type userError interface {
+	error
+	Message() string
+}
+
+
+
 //声明这种类型
 type appHandler  func(writer http.ResponseWriter,request *http.Request) error
+
+
+/*
+当defer语句被执行时，跟在defer后面的函数会被延迟执行。直到包含该defer语句的函数执行完毕时,defer后的函数才会被执行，
+不论包含defer语句的函数是通过return正常结束，
+还是由于panic导致的异常结束。你可以在一个函数中执行多条defer语句，它们的执行顺序与声明顺序相反。
+//先进后出
+*/
 
 //什么时候需要定义函数类型 当它是作为参数时候
 //对业务逻辑函数做错误处理 返回对是一个函数（这个函数又有返回值怎么写？）
 func errWRapper(handle appHandler) func(writer http.ResponseWriter,request *http.Request) {
 	//返回一个参数是writer http.ResponseWriter,request *http.Request的函数
 	return func(writer http.ResponseWriter,request *http.Request){
+		//panic
+        defer func (){
+        	//自定义recover
+        	//如果发生未知错误->自定义处理函数
+        	/*
+        	func Error(w ResponseWriter, error string, code int) {
+				w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+				w.Header().Set("X-Content-Type-Options", "nosniff")
+				w.WriteHeader(code)
+				fmt.Fprintln(w, error)
+			}
+        	*/
+        	if r:=recover();r!=nil{
+        		log.Printf("Panic:%v",r)
+        		http.Error(writer,http.StatusText(http.StatusInternalServerError),http.StatusInternalServerError)
+			}
+		}()
 		err := handle(writer,request)
+		//有返回错误的值 error
 		if err !=nil{
+			//打印日志
+			log.Printf("Error occurred " + "handle request: %s",err.Error())
+			//userError
+			if r,ok :=err.(userError);ok{
+				  http.Error(writer,r.Message(),http.StatusBadRequest)
+				  //return终止这个函数运行的意思
+				  return
+			}
 			//400
 			code :=http.StatusOK
 			switch{
@@ -80,7 +131,7 @@ func main() {
 	// ll
 	//字符串也可以当slice使用？
 	//执行这个步骤 会给回调函数传入request response
-	 http.HandleFunc("/list/",errWRapper(filelisting.Handle))
+	 http.HandleFunc("/",errWRapper(filelisting.Handle))
 
 	 //开启一个应用
 	 err :=http.ListenAndServe(":8888",nil)

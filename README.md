@@ -20,3 +20,7 @@ Go 语言设计模式的实例代码
 - [Go interface 详解(二) ：定义和使用](https://sanyuesha.com/2017/10/10/go-interface-2/)
 - [Go interface 详解 (三) ：interface 的值](https://sanyuesha.com/2017/10/10/go-interface-3/)
 - [Go interface 详解 (四) ：类型断言](https://sanyuesha.com/2017/10/10/go-interface-4/)
+
+
+## 资源和错误处理
+- [Go 资源管理和错误处理详解](https://github.com/vnues/go/tree/master/资源管理/filestingserver/README.md)

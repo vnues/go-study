@@ -63,7 +63,7 @@ ages := make(map[string]int)
 println(ages)//0xc00007ae88 //引用类型
 //map字面值的语法创建map，同时还可以指定一些最初的key/value：
 ages := map[string]int{
-    "alice":   31,
+    "alice":   31,yy
     "charlie": 34,
 }
 
@@ -77,3 +77,4 @@ ages := map[string]int{
 i:=0
 ```
 **make函数是无可替代的，我们在使用slice、map以及channel的时候，还是要使用make进行初始化，然后才才可以对他们进行操作。**
+
