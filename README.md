@@ -24,3 +24,7 @@ Go 语言设计模式的实例代码
 
 ## 资源和错误处理
 - [Go 资源管理和错误处理详解](https://github.com/vnues/go/tree/master/资源管理/filelistingserver/README.md)
+
+
+## 广度迷宫优先算法
+- [Go 广度迷宫优先算法详解:基础综合案例](https://github.com/vnues/go/tree/master/maze/README.md)
