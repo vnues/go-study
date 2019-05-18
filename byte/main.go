@@ -65,9 +65,10 @@ func main(){
 
     //为什么不是三个字节跟切片的左闭右开原则有关？然而并没有关系  go就是用四个字节来代表unicode码点
     s3 :="a我爱中国"
-	fmt.Println(s3[:]) //a我爱中国
+	fmt.Println(s3[:]) //a我爱中国 为什么不是打印出[230,234,3434...]
 	fmt.Println(s3[:2])//a�
-	fmt.Println(s3[:4])//a我 0123   以字节来算的
+	fmt.Println(s3[:4])//a我
+	fmt.Println(s3[1]) //230
 	//for range循环打印出来的是rune类型
 	for _,ss:=range s3{
 		/*
