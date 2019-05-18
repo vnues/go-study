@@ -34,8 +34,9 @@ slice有一些简便的操作
  - 如果从一个数组里面直接获取`slice`，可以这样`ar[:]`，因为默认第一个序列是0，第二个是数组的长度，即等价于`ar[0:len(ar)]`
  
  
- ### string）
- >，Go中的字符串都是采用UTF-8字符集编码。字符串是用一对双引号（""）或反引号（` `）括起来定义，它的类型是string
+ ### string
+ Go 语言中的字符串是一个只读的字节数组切片
+ >Go中的字符串都是采用UTF-8字符集编码。字符串是用一对双引号（""）或反引号（` `）括起来定义，它的类型是string
  
  **注意go语言的string类型与其他语言的string类型可能不一样，比如看以下代码:**
  
@@ -110,7 +111,8 @@ func testString() {
 ```go
   s3 :="a我爱中国"
 	fmt.Println(s3[:]) //a我爱中国
-	fmt.Println(s3[:2])//a�
-	fmt.Println(s3[:4])//a我 0123   以字节来算的
+	fmt.Println(s3[:2])//a� 乱码
+	fmt.Println(s3[:4])//a我 
+	fmt.Println(s3[1]) //230
 ```
-//go内部这样转化为string([]byte(s))？
+//go内部这样转化为string([]byte(s)) --没办法去review底层代码但是应该就是这么回事

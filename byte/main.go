@@ -69,6 +69,7 @@ func main(){
 	fmt.Println(s3[:2])//a�
 	fmt.Println(s3[:4])//a我
 	fmt.Println(s3[1]) //230
+	fmt.Println(s3[2])//136
 	//for range循环打印出来的是rune类型
 	for _,ss:=range s3{
 		/*
