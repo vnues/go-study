@@ -2,6 +2,8 @@
 
 Go 语言设计模式的实例代码
 
+## 浅谈slice、byte、string、rune类型
+- [slice、byte、string、rune类型介绍](https://github.com/vnues/go/tree/master/byte/README.md)
 
 ## new和make
 - [new和make 介绍](https://github.com/vnues/go/tree/master/newAndmake/README.md)

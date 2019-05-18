@@ -12,6 +12,7 @@
       <change afterPath="$PROJECT_DIR$/channel/README.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/regexp/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,12 +49,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/byte/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="105">
-                <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <first_editor>
+                <caret column="27" lean-forward="true" selection-start-column="3" selection-end-column="27" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="75">
+                <caret line="5" column="75" selection-start-line="5" selection-start-column="75" selection-end-line="5" selection-end-column="75" />
               </first_editor>
               <second_editor />
             </state>
@@ -124,13 +137,13 @@
         <option value="$PROJECT_DIR$/maze/maze.in" />
         <option value="$PROJECT_DIR$/maze/main.go" />
         <option value="$PROJECT_DIR$/maze/README.md" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/regex/main.go" />
         <option value="/usr/local/go/src/regexp/regexp.go" />
         <option value="$PROJECT_DIR$/atomic/main.go" />
         <option value="$PROJECT_DIR$/regexp/main.go" />
         <option value="$PROJECT_DIR$/byte/main.go" />
         <option value="$PROJECT_DIR$/byte/README.md" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -152,11 +165,6 @@
             <path>
               <item name="2019go学习" type="b2602c69:ProjectViewProjectNode" />
               <item name="2019go学习" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2019go学习" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2019go学习" type="462c0819:PsiDirectoryNode" />
-              <item name="byte" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="2019go学习" type="b2602c69:ProjectViewProjectNode" />
@@ -260,12 +268,12 @@
     <frame x="0" y="23" width="1440" height="802" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.31545064" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.31545064" />
       <window_info id="Structure" order="1" sideWeight="0.5019841" side_tool="true" weight="0.31545064" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49964106" visible="true" weight="0.29014084" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964106" visible="true" weight="0.29014084" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39859155" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -587,16 +595,6 @@
     <entry file="file://$PROJECT_DIR$/maze/5.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="255">
-            <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/maze/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -687,8 +685,18 @@
     <entry file="file://$PROJECT_DIR$/byte/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="105">
-            <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <first_editor>
+            <caret column="27" lean-forward="true" selection-start-column="3" selection-end-column="27" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="75">
+            <caret line="5" column="75" selection-start-line="5" selection-start-column="75" selection-end-line="5" selection-end-column="75" />
           </first_editor>
           <second_editor />
         </state>
