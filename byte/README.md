@@ -115,4 +115,12 @@ func testString() {
 	fmt.Println(s3[:4])//a我 
 	fmt.Println(s3[1]) //230
 ```
-//go内部这样转化为string([]byte(s)) --没办法去review底层代码但是应该就是这么回事
+go内部这样转化为string([]byte(s)) --没办法去review底层代码但是应该就是这么回事
+
+
+### 总结
+- Go语言中，string就是只读的采用utf8编码的字节切片(slice) 因此用len函数获取到的长度并不是字符个数，而是字节个数。 for循环遍历输出的也是各个字节。
+- 简单来说：Unicode 是「字符集」UTF-8 是「编码规则」其中：字符集：为每一个「字符」分配一个唯一的ID（%U	Unicode 格式：U+1234，等同于 "U+%04X"）
+- byte 等同于int8，常用来处理ascii字符
+- rune 等同于int32,常用来处理unicode或utf-8字符
+- 通过[]rune(s)方法应该是这样的一个过程：字符串->byte->unicode->rune来表示
