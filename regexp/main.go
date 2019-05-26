@@ -1,6 +1,9 @@
 package  main
 
-import "regexp"
+import (
+	"fmt"
+	"regexp"
+)
 
 //全局匹配or局部匹配
 /*
@@ -103,6 +106,37 @@ func main(){
 	//以数组形式返回
 	fmt.Println(r.FindStringSubmatch("peawwwwch  pea11111wwwwch hello world"))
 	fmt.Println(r.FindAllStringSubmatch("peawwwwch  pewerwerwerwerdfdsfwfswwch hello world",2))
+	matches :=r.FindStringSubmatch("peawwwwch  pea11111wwwwch hello world")
+	for _,m:=range matches{
+		fmt.Println(m)
+	}
+	allMatches :=r.FindAllStringSubmatch("peawwwwch  pewerwerwerwerdfdsfwfswwch hello world",-1)
+	for _,all:=range allMatches{
+		//[][]string
+		//string-byte 你可以理解成一维byteslicel类型就是string
+		/*
+		 func (re *Regexp) FindAllStringSubmatch(s string, n int) [][]string
+		*/
+		fmt.Println("--------------------string分割线-------------------------")
+
+		fmt.Println(all)
+	}
+	allMatchesByte :=r.FindAllSubmatch([]byte("peawwwwch  pewerwerwerwerdfdsfwfswwch hello world"),-1)
+	fmt.Println(allMatchesByte)
+	for _,allByte:=range allMatchesByte{
+		fmt.Println("--------------------分割线-------------------------")
+		//fmt.Println(string(allByte)) string只能转化一维数组的
+		fmt.Println(allByte) //allByte是二维数组 allByte[1]就是它的子项·	去啊在Aq·	A·112awZA1·
+		fmt.Println(allByte[1]) //allByte[1]得到的是一个一维数组
+		fmt.Println(string(allByte[1]))
+	}
+    notall :=r.FindSubmatch([]byte("peawwwwch  pewerwerwerwerdfdsfwfswwch hello world"))
+    fmt.Println(notall)
+     for _,not := range notall{
+		 fmt.Println("--------------------not分割线-------------------------")
+     	    fmt.Println(not)
+     	    fmt.Printf("%s \n",not)
+	 }
 	//来循环这个数组
 	//params :=  r.FindStringSubmatch("peawwwwch hello world")
 	//循环的固定形式吗？第一个是index，第二个是value
@@ -154,9 +188,5 @@ func main(){
 	Unicode字符rune类型是和int32等价的类型，通常用于表示一个Unicode码点。
 	这两个名称可以互换使用。同样byte也是uint8类型的等价类型，byte类型一般用于强调数值是一个原始的数据而不是一个小的整数。
 	*/
-
-
-
-
 
 }
