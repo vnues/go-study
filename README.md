@@ -1,11 +1,12 @@
 # Go 语言基础学习
 
-## 变量
+## 变量以及基本数据类型
 - [变量介绍](https://github.com/vnues/go/tree/master/variable/README.md)
 - [整型类型](https://github.com/vnues/go/tree/master/variable/int/README.md)
 - [浮点类型](https://github.com/vnues/go/tree/master/variable/float/README.md)
 - [字符类型](https://github.com/vnues/go/tree/master/variable/char/README.md)
 - [布尔类型](https://github.com/vnues/go/tree/master/variable/boolean/README.md)
+- [string类型](https://github.com/vnues/go/tree/master/variable/string/README.md)
 
 
 ## 浅谈slice、byte、string、rune类型
