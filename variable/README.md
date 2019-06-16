@@ -38,14 +38,17 @@ func main(){
 ## 案例
 
 ```go
-    // 定义变量 声明变量
-	var i int
-	
-	// 给i赋值
-	i=10
-    
-	// 使用变量
-	fmt.Println("i=",i)
+  package main
+  import "fmt"
+  
+  func main() {
+  	//定义变量/声明变量
+  	var i int
+  	//给i 赋值
+  	i = 10
+  	//使用变量
+  	fmt.Println("i=", i)
+  }
 ```
 
 ## 变量使用注意事项
@@ -56,19 +59,98 @@ func main(){
  - Golang变量使用的三种方式
  
  1.第一种:指定变量类型，声明后若不赋值，使用默认值
- ![](./2.jpg)
+```go
+//golang的变量使用方式1
+	//第一种：指定变量类型，声明后若不赋值，使用默认值
+	// int 的默认值是0 , 其它数据类型的默认值后面马上介绍
+	var i int 
+	fmt.Println("i=", i)
+```
  2.第二种:根据值自行判定变量类型(类型推导)
- ![](./3.jpg)
+```go
+//第二种：根据值自行判定变量类型(类型推导)
+	var num  = 10.11
+	fmt.Println("num=", num)
+```
  3.第三种:省略 var, 注意 :=左侧的变量不应该是已经声明过的，否则会导致编译错误
- ![](./4.jpg)
+```go
+//第三种：省略var, 注意 :=左侧的变量不应该是已经声明过的，否则会导致编译错误
+	//下面的方式等价 var name string   name = "tom"
+	// := 的 :不能省略，否则错误
+	name := "tom"
+	fmt.Println("name=", name)
+```
  4.多变量声明:在编程中，有时我们需要一次性声明多个变量，Golang 也提供这样的语法
- ![](./5.jpg)
+```go
+package main
+import "fmt"
+
+func main() {
+	
+	//该案例演示golang如何一次性声明多个变量
+	// var n1, n2, n3 int 
+	// fmt.Println("n1=",n1, "n2=", n2, "n3=", n3)
+
+	//一次性声明多个变量的方式2 
+	// var n1, name , n3 = 100, "tom", 888
+	// fmt.Println("n1=",n1, "name=", name, "n3=", n3)
+
+	//一次性声明多个变量的方式3, 同样可以使用类型推导
+	// n1, name , n3 := 100, "tom~", 888
+	// fmt.Println("n1=",n1, "name=", name, "n3=", n3)
+
+	//输出全局变量
+	//fmt.Println("n1=",n1, "name=", name, "n2=", n2)
+	fmt.Println("n3=",n3, "name2=", name2, "n4=", n4)
+
+}
+```
  如何一次性声明多个全局变量【在 go 中函数外部定义变量就是全局变量】:
- ![](./6.jpg)
+```go
+
+//定义全局变量
+var n1 = 100
+var n2 = 200
+var name = "jack"
+//上面的声明方式，也可以改成一次性声明
+var (
+	n3 = 300
+	n4 = 900
+	name2 = "mary"
+)
+
+```
  5.该区域的数据值可以在同一类型范围内不断变化(重点)
- ![](./7.jpg)
+```go
+package main
+import ( 
+	"fmt"
+	//为了使用utils.go文件的变量或者函数，我们需要先引入该model包 
+	"go_code/chapter03/demo04/model"
+)
+
+//变量使用的注意事项
+func main() {
+	
+	//该区域的数据值可以在同一类型范围内不断变化
+	var i int = 10
+	i = 30
+	i = 50
+	fmt.Println("i=", i)
+	//i = 1.2 //int ,原因是不能改变数据类型
+
+	
+
+}
+```
  6.变量在同一个作用域(在一个函数或者在代码块)内不能重名
- ![](./8.jpg)
+ ```go
+//变量在同一个作用域(在一个函数或者在代码块)内不能重名
+	//var i int = 59
+	//i := 99
+	//我们使用utils.go 的heroName 包名.标志符
+	fmt.Println(model.HeroName)
+```
  7.变量=变量名+值+数据类型，这一点请大家注意，变量的三要素
  
  8.Golang 的变量如果没有赋初值，编译器会使用默认值, 比如 int 默认值 0 小数默认为 0
@@ -81,8 +163,25 @@ func main(){
  
  - 当左右两边都是数值型时，则做加法运算
  - 当左右两边都是字符串，则做字符串拼接
- ![](./10.jpg)
- 
+```go
+package main
+import "fmt"
+
+//演示golang中+的使用
+func main() {
+	
+	var i = 1
+	var j = 2
+	var r = i + j //做加法运算
+	fmt.Println("r=", r)
+
+	var str1 = "hello "
+	var str2 = "world"
+	var res = str1 + str2 //做拼接操作
+	fmt.Println("res=", res)
+
+}
+``` 
  
  ## 数据类型的基本介绍
  ![](./11.jpg)
