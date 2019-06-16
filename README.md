@@ -3,6 +3,7 @@
 ## 变量
 - [变量介绍](https://github.com/vnues/go/tree/master/variable/README.md)
 - [整型类型](https://github.com/vnues/go/tree/master/variable/int/README.md)
+- [浮点类型](https://github.com/vnues/go/tree/master/variable/float/README.md)
 
 ## 浅谈slice、byte、string、rune类型
 - [slice、byte、string、rune类型介绍](https://github.com/vnues/go/tree/master/byte/README.md)
