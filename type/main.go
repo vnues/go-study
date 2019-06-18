@@ -3,7 +3,24 @@ package main
 import "fmt"
 
 func main() {
+	//var aa []int
+	//fmt.Println(aa)
+	//
+	//var bb map[int]string
+	//fmt.Println(bb)
 
+	//
+	//type AD struct{
+	//	a  []int
+	//	b map[string]string
+	//}
+	//
+	//func (A *AD)add(){
+	//	fmt.Println(A.a)
+	//	fmt.Println(A.b)
+	//}
+	//fmt.Println(AD.a)
+	//fmt.Println(AD.b)
 	// A slice B数组
 
 
