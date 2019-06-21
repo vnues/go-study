@@ -44,7 +44,8 @@ func (this *CustomerView) MainMenu(){
 			// fmt.Println("添 加 用 户")
 			this.Add()
 		case "2":
-			fmt.Println("修 改 用 户")
+			//fmt.Println("修 改 用 户")
+			this.Update()
 		case "3":
 			//fmt.Println("删 除 用 户")
 			this.Delete()
@@ -138,6 +139,35 @@ func (this *CustomerView)Delete(){
 
 }
 
+// 更新
+
+func(this *CustomerView)Update(){
+	fmt.Println("请选择待更新的客户编号(-1退出): ")
+	id :=-1
+	fmt.Scanln(&id) // 输入字母赋值不了 因为是int类型
+	if id==-1{
+		// fmt.Println("\n-----------------退出成功-----------------\n")
+		return
+	}
+	fmt.Println("姓名:")
+	name := ""
+	fmt.Scanln(&name)
+	fmt.Println("性别:")
+	gender := ""
+	fmt.Scanln(&gender)
+	fmt.Println("年龄:")
+	age := 0
+	fmt.Scanln(&age)
+	fmt.Println("电话:")
+	phone := ""
+	fmt.Scanln(&phone)
+	fmt.Println("电邮:")
+	email := ""
+	fmt.Scanln(&email)
+	customer :=model.NewCustomer(id,name,gender,age,phone,email)
+	this.customerService.UpdateList(id,customer)
+
+}
 
 // generic 通用
 

@@ -43,18 +43,12 @@ func (this *CustomerService)AddList(customer model.Customer)bool{
       this.customers=append(this.customers,customer)
       return true
 }
-
+// 删除
 func (this *CustomerService)DeleteList(Id int)bool{
 
 	   // 思路
 	   // 根据结构体循环找出下标
-	   index :=-1
-	   for i,item:=range this.customers{
-		   if(Id==item.Id){
-		   	  index=i
-		   	  break
-		   }
-	   }
+	   index :=this.findById(Id)
 	   // func append(slice []Type, elems ...Type) []Type 所以DeleteList也没必要返回error
 	   this.customers=append(this.customers[:index],this.customers[index+1:]...)
 	   return true
@@ -62,3 +56,26 @@ func (this *CustomerService)DeleteList(Id int)bool{
 }
 
 
+
+// 更新
+
+func (this *CustomerService) UpdateList(Id int,customer model.Customer)bool{
+
+	    this.customers[this.findById(Id)]=customer
+
+	    return true
+}
+
+
+// 查找下标
+
+func (this *CustomerService)findById(Id int) int{
+	index :=-1
+	for i,item:=range this.customers{
+		if(Id==item.Id){
+			index=i
+			break
+		}
+	}
+	return index
+}
