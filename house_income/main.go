@@ -27,7 +27,7 @@ func main(){
 		 fmt.Println("4-退出程序")
 		 fmt.Println("请选择(1-4):")
 		 // 注意传个指针过去 不然就改变不了key值 -- 很多时候我们要需要改变值 好奇怪的golang设计成值传递
-		  fmt.Scanln(&key)
+		 _, _ = fmt.Scanln(&key)
 		 switch key {
 		 case "1":
 			 fmt.Println("\n--------------当前收支明细记录--------------")
@@ -38,10 +38,10 @@ func main(){
 			 }
 		 case "2":
 			 fmt.Println("本次收入金额：")
-			 fmt.Scanln(&money)
+			 _, _ = fmt.Scanln(&money)
 			 balance += money //修改账户余额
 			 fmt.Println("本次收入说明：")
-			 fmt.Scanln(&note)
+			 _, _ = fmt.Scanln(&note)
 			 // 　%v	相应值的默认格式。在打印结构体时，“加号”标记（%+v）会添加字段名 %c 是以字符串输出 money是float类型
 			 // Sprintf formats according to a format specifier and returns the resulting string. specifier说明符
 			//  details += fmt.Sprintf("\n\n收入\t\t\t%c\t\t\t%v\t\t\t%v",balance,money,note) // %!c(float64=10100)
