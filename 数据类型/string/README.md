@@ -72,7 +72,10 @@ func main() {
 	fmt.Println(str4)
 ```
 
-### **Go 语言字符编码**
+## [Unicode 和 UTF-8 有什么区别？](https://www.zhihu.com/question/23374078)
+
+> 一句话，utf8是对unicode字符集进行编码的一种编码方式
+## **Go 语言字符编码**
 
 
 > 背景：在我们使用 Golang 进行开发过程中，总是绕不开对字符或字符串的处理，而在 Golang 语言中，对字符和字符串的处理方式可能和其他语言不太一样，比如 Python 或 Java 类的语言，本篇文章分享一些 Golang 语言下的 Unicode 和字符串编码。\
