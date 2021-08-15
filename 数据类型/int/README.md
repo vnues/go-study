@@ -7,7 +7,7 @@
   
 ## 整数的各个类型
 
-![](./1.jpg)
+![](1.jpg)
 
 ```go
 package main
@@ -35,14 +35,14 @@ func main() {
 
 - int 的无符号的类型 (静态类型unsign)
 
-![](./3.jpg)
+![](3.jpg)
 ```go
 //测试一下 uint8的范围(0-255),其它的 uint16, uint32, uint64类推即可
 	var k uint16 = 255
 	fmt.Println("k=", k)
 ```
 - int 的其它类型的说明:
-![](./6.jpg)
+![](6.jpg)
 ```go
 //int , uint , rune , byte的使用
 	var a int = 8900
