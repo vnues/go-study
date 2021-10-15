@@ -1,4 +1,3 @@
-
 package main
 
 // interface <- 实例化结构体 <- 结构体
@@ -10,21 +9,22 @@ import (
 )
 
 type Element interface{}
-type List [] Element
+type List []Element
 
 type Person struct {
 	name string
-	age int
+	age  int
 }
 
 // 打印
 func (p Person) String() string {
-	return "(name: " + p.name + " - age: "+strconv.Itoa(p.age)+ " years)"
+	return "(name: " + p.name + " - age: " + strconv.Itoa(p.age) + " years)"
 }
+
 /*
 Comma-ok 断言
 
-Go 语言里面有一个语法，可以直接判断是否是该类型的变量： value, ok = element.(T)，这里 value 就是变量的值，ok 是一个 bool 类型，element 是 interface 变量，T 是断言的类型。
+Go 语言里面有一个语法，可以直接判断是否是该类型的变量： value, ok = element.(T)，这里 value 就是变量的值，ok 是一个 bool 类型，element 是 interface variable，T 是断言的类型。
 
 如果 element 里面确实存储了 T 类型的数值，那么 ok 返回 true，否则返回 false。
 
@@ -79,16 +79,16 @@ func main() {
 // 语法觉得怪异的拆出来看看就知道了
 func main() {
 	var a int = 2
-	if value,ok:=a.(int);ok{
-		 fmt.Println("进行类型断言value:%d\n",value)
+	if value, ok := a.(int); ok {
+		fmt.Println("进行类型断言value:%d\n", value)
 	}
 	// assertion type
 	list := make(List, 3)
-	list[0] = 1 // an int
+	list[0] = 1       // an int
 	list[1] = "Hello" // a string
 	list[2] = Person{"Dennis", 70}
 
-	for index, element := range list{
+	for index, element := range list {
 		// value :=1
 		switch value := element.(type) {
 		case int:
@@ -107,6 +107,5 @@ func main() {
 
 // 小猴子类继承老猴子类的行为和方法 本身通过努力实现飞翔，那么我直接在小猴子类实现方法为什么通过实现接口尼因为猴子是不会飞的 你需要一个契机或者通道
 // 这个契机或者通道就是interface 接口是对继承的扩展
-
 
 // 空接口可以接收任何一个变量

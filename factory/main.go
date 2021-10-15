@@ -7,8 +7,8 @@ import (
 
 
 func main(){
-	// Golang 在创建结构体实例(变量)时，可以直接指定字段的值
-	// 这样可以不用指定这个变量是什么类型 因为自动赋值就确定了 正常声明是var 变量 变量类型
+	// Golang 在创建结构体实例(variable)时，可以直接指定字段的值
+	// 这样可以不用指定这个变量是什么类型 因为自动赋值就确定了 正常声明是var variable 变量类型
 	var student =model.NewStudent("tom",26)
 	fmt.Println(*student) // {tom 26}
 	fmt.Println(student.Name) // tom

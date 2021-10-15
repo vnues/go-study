@@ -1,4 +1,4 @@
-package initt
+package start
 
 import (
 	"fmt"
@@ -13,9 +13,9 @@ func f() int {
 	return c + 1
 }
 
-func Init() {
-
+func Start() {
 	fmt.Println(a)
 	fmt.Println(b)
 	fmt.Println(c)
+	f()
 }
