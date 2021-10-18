@@ -47,12 +47,14 @@ type treeNode struct {
 	left, right *treeNode // treeNode类型
 }
 
+// 定义接收者的类型 所以使用的时候内部就按接收者的类型传递对应的类型 一般是指针类型 ---> 相当于JS中Class的this关键字
+// 使用值接收者定义的方法，在调用的时使用的其实是值接收者的一个拷贝，所以对该值的任何操作，都不会影响原来的类型变量。
 func (node treeNode) print() {
 	fmt.Println(node.value)
 }
 
 // go指针也很方便直接xx.xx的形式也可以访问属性
-// 引用者
+// 使用值接收者定义的方法，在调用的时使用的其实是值接收者的一个拷贝，所以对该值的任何操作，都不会影响原来的类型变量。
 func (node *treeNode) setValue(value int) {
 	// value int传递过来的参数
 	node.value = value

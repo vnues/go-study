@@ -48,7 +48,7 @@ func Fetcher(url string) ([]byte, error) {
 	}
 	bodyReader := bufio.NewReader(resp.Body)
 	/*
-	    NewReader returns a new Reader whose buffer has the default size.
+	   NewReader returns a new Reader whose buffer has the default size.
 	   func NewReader(rd io.Reader) *Reader {
 	   	return NewReaderSize(rd, defaultBufSize)
 	   }
