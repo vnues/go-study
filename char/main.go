@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// rune的作用是将unicode编码表示存入 ，而unicode编码是字符集编码的表示
+//      rune的作用是将unicode编码表示存入 ，而unicode编码是字符集编码的表示
 func lengthOfNonRepeatingSubStr(s string) int {
 	// map的作用可以让我们判断有没有存在 还可以存入下标
 	maxlength := 0
