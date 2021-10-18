@@ -3,6 +3,7 @@ package fetch
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -34,7 +35,12 @@ func Fetcher(url string) ([]byte, error) {
 		log.Fatalln(err)
 	}
 
-	defer resp.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+
+		}
+	}(resp.Body)
 
 	// 有请求但是不成功
 	if resp.StatusCode != http.StatusOK {

@@ -16,10 +16,10 @@ type ConcurrentEngine struct {
 // 如果实现接口的方法的引用者是指针
 // 那么我们用这个这个接口去当类型的时候，实例化接口变量也需要指针类型
 type Scheduler interface {
-	// 接口定义的方法可以不用指明参数名
+	// Submit 接口定义的方法可以不用指明参数名
 	// in<-r
 	Submit(Request)
-	// 这个接口的方法就是能让实现这个接口方法的人拿到in管道(in管道又放Requesr)
+	// ConfigureMasterWorkerChan 这个接口的方法就是能让实现这个接口方法的人拿到in管道(in管道又放Requesr)
 	ConfigureMasterWorkerChan(chan Request)
 
 	Run()
@@ -79,5 +79,4 @@ func createWorker(s Scheduler, out chan ParseResult) {
 			out <- parseResult
 		}
 	}()
-
 }
