@@ -32,9 +32,11 @@ func (e *ConcurrentEngine) Run(seeds ...Request) {
 	// 定义两个管道
 	// in :=make(chan Request)
 	// 输出结果类型的channel
+	// out是共用一个的
 	out := make(chan ParseResult)
 	// 给实现接口方法的结构体拿到in
 	// e.Scheduler.ConfigureMasterWorkerChan(in)
+	// 调度器初始化工作
 	e.Scheduler.Run()
 	// 开启多个createWorker--嗷嗷待哺要从in管道拿到种子
 	// WorkerCount worker的数量
@@ -45,6 +47,7 @@ func (e *ConcurrentEngine) Run(seeds ...Request) {
 	}
 	// 要把种子送去scheduler队列的方法--种子是通过in channel去拿的
 	for _, r := range seeds {
+		// 将request放入request channel
 		e.Scheduler.Submit(r)
 	}
 	// 记数
@@ -70,14 +73,28 @@ func (e *ConcurrentEngine) Run(seeds ...Request) {
 // 尽量用值传递，非指针传递。
 // 传入参数是 map，slice，chan，interface 不要传递指针。
 
-// 管道的通信需要建立起码两个goroutine所以createWorker是个gorutine
+// 管道的通信需要建立起码两个goroutine所以createWorker是个goroutine
 // 开启一个协程
 func createWorker(s Scheduler, out chan ParseResult) {
 	// 缓存seed的channel
+	// 每调用一个createWorker就创建一个in channel
+	// 一个worker对应一个in channel
 	in := make(chan Request)
 	go func() {
+		// 一个worker消耗一个in channel (存放多个request)
+		// 再也不是多个worker去抢一个in channel
 		for {
+			// 一个worker准备好了
+			// in - 存放request的channel
+			// workChan是 worker channel
+			// WorkerReady: s.workChan <- in
+			// channel也对应一个make创建的底层数据结构的引用。当我们复制一个channel或用于函数参数传递时，我们只是拷贝了一个channel引用，因此调用者和被调用者将引用同一个channel对象。和其它的引用类型一样，channel的零值也是nil
+			// 派生类型的函数参数传递是拷贝了一份地址 原来是这样
+			// 这里就是的动作：其实就是让request传过来
+			// 我worker准备好了,request可以传过来
+			// TODO 但是worker获取到的request也是无序的
 			s.WorkerReady(in)
+			// request就是seed
 			request := <-in
 			// worker的工作包括fetch+parse
 			parseResult, err := worker(request)

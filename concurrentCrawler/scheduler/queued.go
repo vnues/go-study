@@ -31,6 +31,7 @@ func (s *QueuedScheduler) Run() {
 		s.workChan = make(chan chan engine.Request)
 		s.requestChan = make(chan engine.Request)
 		// 创建两个队列用来存request和worker
+		// 并且队列
 		var requestQ []engine.Request // request队列
 		var workerQ []chan engine.Request
 		// 这两个队列的执行机制是这样的 request从队列拿出来然后交给worker队列拿出来的worker，workera需要这个种子才能执行  request->worker
@@ -52,6 +53,8 @@ func (s *QueuedScheduler) Run() {
 				// 有新的worker进来，放进去队列
 			case worker := <-s.workChan:
 				workerQ = append(workerQ, worker)
+				// worker和request都准备好了 就传过去 可以干活了
+				// 其实最后是转化为 in <- activeRequest
 			case activeWorker <- activeRequest:
 				requestQ = requestQ[1:]
 				workerQ = workerQ[1:]
