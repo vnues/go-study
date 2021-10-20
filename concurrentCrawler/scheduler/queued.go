@@ -28,6 +28,7 @@ func (s *QueuedScheduler) ConfigureMasterWorkerChan(c chan engine.Request) {}
 // Run TODO
 func (s *QueuedScheduler) Run() {
 	go func() {
+		// 同时有worker和request才会会执行爬取工作
 		s.workChan = make(chan chan engine.Request)
 		s.requestChan = make(chan engine.Request)
 		// 创建两个队列用来存request和worker
