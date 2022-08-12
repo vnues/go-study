@@ -25,11 +25,13 @@ func main() {
 	log.Fatal(server.Serve(listen))
 }
 
+// 启动一个grpc gateway服务
 func quickStartGRPCGateway() {
 	ctx := context.Background()
 	ctx, cancelFunc := context.WithCancel(ctx)
 	defer cancelFunc()
 
+	// mux与grpc建立的联系实例，可以有多个
 	mux := runtime.NewServeMux(runtime.WithMarshalerOption(runtime.MIMEWildcard, &runtime.JSONPb{MarshalOptions: protojson.MarshalOptions{UseEnumNumbers: true, UseProtoNames: true}}))
 	err := trippb.RegisterTripServiceHandlerFromEndpoint(ctx, mux, "localhost:8081", []grpc.DialOption{grpc.WithInsecure()})
 	if err != nil {
